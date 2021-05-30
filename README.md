@@ -144,6 +144,16 @@ The Unicode build on Windows should handle things like emojis without problems e
 ### Undo demo
 ![test](https://user-images.githubusercontent.com/20754288/120099884-2f433980-c13e-11eb-9964-cda76bf26d3c.mov)
 
+## Download
+Pre-built binaries are provided for the following platform
+- macOS: [bin/macos/srnames?raw=true](srnames) built under macOS Big Sur with Xcode 12.5
+- Windows: [bin/w/srnames.exe?raw=true](srnames.exe) built under Windows 10 with Visual Studio 2019
+- Windows Unicode build: [bin/w/srnamesu.exe?raw=true](srnamesu.exe) built under Windows 10 with Visual Studio 2019
+- DOS: [bin/dos/SRNAMES.EXE?raw=true](SRNAMES.EXE)
+For Linux, Unix it is highly recommended that you clone the repo and build it using your distribution's tools.
+For convenience, I'm including a statically-linked 64-bit ELF binary built on my Arch Linux installation
+- Arch Linux [bin/linux_arch64/srnames_static?raw=true]
+
 
 ## Building
 ### macOS
