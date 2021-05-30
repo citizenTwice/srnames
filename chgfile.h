@@ -48,6 +48,10 @@ SOFTWARE.
 struct CHANGES_FILE {
 private:
   DYNSTR      m_tmpold, m_tmpnew, m_tmpwork;
+#if !defined(__DOS__)
+  CHANGES_FILE(const CHANGES_FILE& other) = delete;
+  CHANGES_FILE& operator=(const CHANGES_FILE& other) = delete;
+#endif
 public:
   const _TCHAR* m_path;
   FILE* m_fp;
