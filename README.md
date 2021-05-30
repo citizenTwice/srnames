@@ -110,7 +110,7 @@ Done!
 ```
  
 ## Demos
-###regex & Unicode 
+### regex & Unicode 
 ![unicode rename](demos/ren_unicode.png)
 ### Simple DOS rename
 ![DOS rename](demos/dos_rename.png)
