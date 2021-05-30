@@ -150,7 +150,7 @@ Pre-built binaries are provided for the following platform
 - macOS: [srnames](https://github.com/citizenTwice/srnames/blob/main/bin/mac/srnames?raw=true) built under macOS Big Sur with Xcode 12.5
 - Windows: [srnames.exe](https://github.com/citizenTwice/srnames/blob/main/bin/w/SRNAMES.EXE?raw=true) built under Windows 10 with Visual Studio 2019
 - Windows Unicode build: [srnamesu.exe](https://github.com/citizenTwice/srnames/blob/main/bin/w/SRNAMESU.EXE?raw=true) built under Windows 10 with Visual Studio 2019
-- DOS: [SRNAMES.EXE](https://github.com/citizenTwice/srnames/blob/main/bin/DOS/SRNAMES.EXE?raw=true)
+- DOS: [SRNAMES.EXE](https://github.com/citizenTwice/srnames/blob/main/bin/DOS/SRNAMES.EXE?raw=true) built with Open Watcom v2 build 2021-x
 
 For Linux, Unix it is highly recommended that you clone the repo and build it using your distribution's tools.
 For convenience, I'm including a statically-linked 64-bit ELF binary built on my Arch Linux installation
