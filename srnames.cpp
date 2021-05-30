@@ -145,6 +145,7 @@ struct _g__globals {
   STRBLK all_names;
   bool recurse;
   bool dirs_too;
+  bool dirs_only;
   bool whatif;
   bool nocase;
   bool quiet;
@@ -162,6 +163,7 @@ struct _g__globals {
   _g__globals() {
     recurse = false;
     dirs_too = false;
+    dirs_only = false;
     whatif = false;
     nocase = false;
     quiet = false;
@@ -207,7 +209,7 @@ static bool exists(const _TCHAR* path) {
 #if defined(__DOS__)  
   unsigned tmp;
   return (_dos_getfileattr(path, &tmp) == 0);
-#elif defined(__WIN32)  
+#elif defined(_WIN32)  
   return (GetFileAttributes(path) != INVALID_FILE_ATTRIBUTES);
 #elif defined(__linux__) || defined(__unix__) || defined(__APPLE__) 
   struct stat tmp;
@@ -342,39 +344,41 @@ static bool do_dir(
     entry_path.set(path);
     entry_path.append(PATH_SEP);
     entry_path.append(all_files[i]);
-    temp_name.set(all_files[i]);
-    bool chg = false;
-    if (g_globals.use_regex) {
+    temp_name.set(all_files[i]);    
+    if (!g_globals.dirs_only) {
+      bool chg = false;
+      if (g_globals.use_regex) {
 #if defined(_WITH_REGEX)
-      chg = temp_name.replace_all_regex(g_globals.search, g_globals.repl, g_globals.nocase);
+        chg = temp_name.replace_all_regex(g_globals.search, g_globals.repl, g_globals.nocase);
 #else
-      chg = temp_name.replace_all(g_globals.search, g_globals.repl, g_globals.nocase);
+        chg = temp_name.replace_all(g_globals.search, g_globals.repl, g_globals.nocase);
 #endif
-    } else {
-      chg = temp_name.replace_all(g_globals.search, g_globals.repl, g_globals.nocase);
-    }
-    if (chg) {
-      replace_and_update_keywords(&temp_name);
-      new_path.set(path);
-      new_path.append(PATH_SEP);
-      new_path.append(temp_name.get());
-      if (!g_globals.quiet) {
+      } else {
+        chg = temp_name.replace_all(g_globals.search, g_globals.repl, g_globals.nocase);
+      }
+      if (chg) {
+        replace_and_update_keywords(&temp_name);
+        new_path.set(path);
+        new_path.append(PATH_SEP);
+        new_path.append(temp_name.get());
+        if (!g_globals.quiet) {
+          if (!g_globals.whatif) {
+            printf(_T("RENAMING   "));
+          } else {
+            printf(_T("WOULD REN. "));
+          }
+          printf(_T("FILE : %s\n"), entry_path.get());
+          printf(_T("           TO   : %s\n"), new_path.get());
+        }
         if (!g_globals.whatif) {
-          printf(_T("RENAMING   "));
-        } else {
-          printf(_T("WOULD REN. "));
-        }
-        printf(_T("FILE : %s\n"), entry_path.get());
-        printf(_T("           TO   : %s\n"), new_path.get());
-      }
-      if (!g_globals.whatif) {
-        if (!rename_file_or_dir(entry_path.get(), new_path.get())) {
-          fprintf(stderr, _T("ERROR: renaming %s failed\n"), entry_path.get());
-        } else {
-          log_change(entry_path.get(), new_path.get());
+          if (!rename_file_or_dir(entry_path.get(), new_path.get())) {
+            fprintf(stderr, _T("ERROR: renaming %s failed\n"), entry_path.get());
+          } else {
+            log_change(entry_path.get(), new_path.get());
+          }
         }
       }
-    } 
+    }
   }
   for (uint32_t  i = 0; i < all_dirs.size(); i++) {
     entry_path.set(path);
@@ -390,7 +394,7 @@ static bool do_dir(
       #endif
       }
     temp_name.set(all_dirs[i]);
-    if (g_globals.dirs_too) {
+    if (g_globals.dirs_too || g_globals.dirs_only) {
       bool chg = false;
       if (g_globals.use_regex) {
 #if defined(_WITH_REGEX)
@@ -436,6 +440,7 @@ static void show_help() {
   printf(_T("  Options:\n"));
   printf(_T("      -i, --ignore-case              Ignore case in searches.\n"));
   printf(_T("      -d, --dirs-too                 Also rename directories (default is files-only.)\n"));
+  printf(_T("      -D, --dirs-only                Only rename directories (no files.)\n"));
   printf(_T("      -a, --start-at=path            Start searching at given path.\n"));
   printf(_T("                                     Default is: current directory.\n"));
   printf(_T("      -r, --recurse                  Recursively include all directories.\n"));
@@ -489,10 +494,14 @@ int _tmain(int ac, _TCHAR** av) {
       is_opt(av[i],_T("--recurse"))
     ) {
       g_globals.recurse = true;
-    } else if (is_opt(av[i],_T("--dirs-too")) || 
-      is_opt(av[i],_T("-d"))
-    ) {
+    } else if (is_opt(av[i], _T("--dirs-too")) ||
+      is_opt(av[i], _T("-d"))
+      ) {
       g_globals.dirs_too = true;
+    } else if (is_opt(av[i], _T("--dirs-only")) ||
+      is_opt(av[i], _T("-D"))
+      ) {
+      g_globals.dirs_only = true;
     } else if (is_opt(av[i], _T("--quiet")) ||
       is_opt(av[i], _T("-q"))
       ) {
@@ -561,9 +570,12 @@ int _tmain(int ac, _TCHAR** av) {
     }
   }
   if (!g_globals.no_confirm && !g_globals.whatif) {
-    printf(_T("Settings:\n -> look for files "));
-    if (g_globals.dirs_too) {
-      printf(_T("and directories\n"));
+    printf(_T("Settings:\n -> look for "));
+    if (!g_globals.dirs_only) {
+      printf(_T("[files] "));
+    } 
+    if (g_globals.dirs_too || g_globals.dirs_only) {
+      printf(_T("[directories]\n"));
     } else {
       printf(_T("\n"));
     }

@@ -31,6 +31,7 @@ srnames - search and replace file/dir names.
   Options:
       -i, --ignore-case              Ignore case in searches.
       -d, --dirs-too                 Also rename directories (default is files-only.)
+      -D, --dirs-only                Only rename directories (no files.)
       -a, --start-at=path            Start searching at given path.
                                      Default is: current directory.
       -r, --recurse                  Recursively include all directories.
@@ -58,6 +59,11 @@ srnames - search and replace file/dir names.
                                      ##    = literal #.
 
 ```
+## Notes
+### Unicode support
+on macOS and Linux Unicode should work out-of-the-box with UTF-8 locales. On working with regular expressions, remember that things like Emoji's do not necessarily count as or expand to a single character. On Windows, there is separate build SRNAMESU.EXE, Unicode will not work with the normal, ASCII-only build SRNAMES.EXE
+### DOS
+Unicode support and regular expressions are not available under DOS due to lack of experience building Unicode under DOS and not being able to find a usable std::regex implementation yet
  
 ## Examples
 ### regex search & replace
