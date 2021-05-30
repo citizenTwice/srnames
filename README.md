@@ -110,8 +110,11 @@ Done!
 ```
  
 ### Demos
+##### regex & Unicode 
 ![unicode rename](demos/ren_unicode.png)
-undo_demo.mov
+##### Simple DOS rename
+![DOS rename](demos/dos_rename.png)
+##### Undo demo
 ![test](https://user-images.githubusercontent.com/20754288/120099884-2f433980-c13e-11eb-9964-cda76bf26d3c.mov)
 
 
