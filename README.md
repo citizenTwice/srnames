@@ -178,7 +178,7 @@ MIT [License](LICENSE)
 
 ## Feedback
 Bugs/Suggestions/Comments/Feedback to:
-* Email: [LG@citizentwice.nl](mailto:LG@citizentwice.nl)
+* Email: [GIT@THLG.NL](mailto:GIT@THLG.NL)
 
 #### Finally
 Thanks for visting!

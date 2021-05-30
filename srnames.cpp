@@ -1,6 +1,6 @@
 /*
 
-SRNAMES - coded by Luigi Galli LG@citizenTwice.nl
+SRNAMES - coded by Luigi Galli GIT@THLG.NL
 
 MIT License
 
