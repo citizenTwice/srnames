@@ -3,7 +3,7 @@ Multi-platform search+replace file & directory rename utility.
 
 ##### Table of Contents  
 [Features](#features)  
-[Supported platforms](#Supported platforms)  
+[Supported platforms](#platforms)  
 [Syntax](#Syntax)  
 [Notes](#Notes)  
 [Examples](#Examples)  
@@ -20,7 +20,7 @@ Multi-platform search+replace file & directory rename utility.
  - Portable, stand-alone executables
  - Builds without dependencies other than the platform's compiler/SDK
 
-## Supported platforms
+## Platforms
  - macOS
  - Linux
  - Windows (ASCII & Unicode builds)
