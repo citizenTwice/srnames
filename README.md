@@ -22,7 +22,7 @@ Multi-platform search+replace file & directory rename utility.
  - Windows (ASCII & Unicode builds)
  - DOS/Freedos w.DPMI [experimental, some features are not available]
  
-### Usage
+### Syntax
 ```
 srnames - search and replace file/dir names.
   Required:
@@ -115,6 +115,19 @@ undo_demo.mov
 
 
 ### Building
+#### macOS
+- requirements: recent (as of 2021) XCode version
+- build command ` build_macos.sh `
+#### Linux and other *ix
+- requirements: recent (as of 2021) GCC C++ version
+- build command ` build_unix.sh `
+#### Windows
+- requirements: Visual C++ from VS2019 or newer
+- build command ` build_vc2019.cmd `
+#### DOS
+- requirements: recent (as of 2021) OpenWatcom C/C++
+- build command ` BUILDOS.BAT `
+
 
 ### License
 MIT
