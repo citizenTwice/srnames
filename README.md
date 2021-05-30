@@ -2,19 +2,23 @@
 Multi-platform search+replace file & directory rename utility.
 
 ##### Table of Contents  
-[Headers](#features)  
-[Supported platforms](#platforms)  
-[Usage](#usage)  
+[Features](#features)  
+[Supported platforms](#Supported platforms)  
+[Syntax](#Syntax)  
+[Notes](#Notes)  
+[Examples](#Examples)  
+[Demos](#Demos)  
+[Building](#Building)  
 
 ## Features
- - Can rename both files and directories, recursively if needed.
+ - Rename files and/or directories, recursively if needed
  - Regex support
  - Variables in replacement expressions
- - Preview actions without making changes.
- - Create changes log, for undo (provided by separate scripts.)
+ - Preview actions without making changes
+ - Create changes log, for undo (provided by separate scripts)
  - Unicode support
- - Portable, stand-alone executable.
- - Builds without dependencies other than the platform's compiler/SDK.
+ - Portable, stand-alone executables
+ - Builds without dependencies other than the platform's compiler/SDK
 
 ## Supported platforms
  - macOS
@@ -61,9 +65,9 @@ srnames - search and replace file/dir names.
 ```
 ## Notes
 ### Unicode support
-on macOS and Linux Unicode should work out-of-the-box with UTF-8 locales. On working with regular expressions, remember that things like Emoji's do not necessarily count as or expand to a single character. On Windows, there is separate build SRNAMESU.EXE, Unicode will not work with the normal, ASCII-only build SRNAMES.EXE
+On macOS and Linux Unicode should work out-of-the-box with UTF-8 locales. On working with regular expressions, remember that things like Emoji's do not necessarily count as or expand to a single character. On Windows, there is separate build SRNAMESU.EXE, Unicode will not work with the normal, ASCII-only build SRNAMES.EXE.
 ### DOS
-Unicode support and regular expressions are not available under DOS due to lack of experience building Unicode under DOS and not being able to find a usable std::regex implementation yet
+Unicode support and regular expressions are not available under DOS due to lack of experience building Unicode under DOS and not being able to find a usable std::regex implementation (yet.)
  
 ## Examples
 ### regex search & replace
