@@ -146,13 +146,13 @@ The Unicode build on Windows should handle things like emojis without problems e
 
 ## Download
 Pre-built binaries are provided for the following platform
-- macOS: [srnames](bin/macos/srnames?raw=true) built under macOS Big Sur with Xcode 12.5
-- Windows: [srnames.exe](bin/w/srnames.exe?raw=true) built under Windows 10 with Visual Studio 2019
-- Windows Unicode build: [srnamesu.exe](bin/w/srnamesu.exe?raw=true) built under Windows 10 with Visual Studio 2019
-- DOS: [SRNAMES.EXE](bin/dos/SRNAMES.EXE?raw=true)
+- macOS: [srnames](https://github.com/citizenTwice/srnames/blob/main/bin/macos/srnames?raw=true) built under macOS Big Sur with Xcode 12.5
+- Windows: [srnames.exe](https://github.com/citizenTwice/srnames/blob/main/bin/w/srnames.exe?raw=true) built under Windows 10 with Visual Studio 2019
+- Windows Unicode build: [srnamesu.exe](https://github.com/citizenTwice/srnames/blob/main/bin/w/srnamesu.exe?raw=true) built under Windows 10 with Visual Studio 2019
+- DOS: [SRNAMES.EXE](https://github.com/citizenTwice/srnames/blob/main/bin/dos/SRNAMES.EXE?raw=true)
 For Linux, Unix it is highly recommended that you clone the repo and build it using your distribution's tools.
 For convenience, I'm including a statically-linked 64-bit ELF binary built on my Arch Linux installation
-- Arch Linux [srnames_static](bin/linux_arch64/srnames_static?raw=true)
+- Arch Linux [srnames_static](https://github.com/citizenTwice/srnames/blob/main/bin/linux_arch64/srnames_static?raw=true)
 
 
 ## Building
