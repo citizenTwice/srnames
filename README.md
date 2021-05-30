@@ -148,6 +148,7 @@ Done!
 ### Linux and other *ix
 - requirements: recent (as of 2021) GCC C++ version
 - build command ` build_unix.sh `
+- it is possible to create a static build on some systems. See comments in build_unix.sh for an example.
 ### Windows
 - requirements: Visual C++ from VS2019 or newer
 - build command ` build_vc2019.cmd `
