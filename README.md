@@ -139,8 +139,8 @@ Done!
 ![DOS rename](demos/dos_rename.png)
 ### Windows Unicode
 The Unicode build on Windows should handle things like emojis without problems even if they don't show up correctly in the console
-![windows unicode](demos/win_unicode1_.png)
-![windows unicode](demos/win_unicode2_.png)
+![windows unicode](demos/win_unicode1.png)
+![windows unicode](demos/win_unicode2.png)
 ### Undo demo
 ![test](https://user-images.githubusercontent.com/20754288/120099884-2f433980-c13e-11eb-9964-cda76bf26d3c.mov)
 
