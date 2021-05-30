@@ -146,7 +146,7 @@ The Unicode build on Windows should handle things like emojis without problems e
 
 ## Download
 Pre-built binaries are provided for the following platform
-- macOS: [srnames](https://github.com/citizenTwice/srnames/blob/main/bin/macos/srnames?raw=true) built under macOS Big Sur with Xcode 12.5
+- macOS: [srnames](https://github.com/citizenTwice/srnames/blob/main/bin/mac/srnames?raw=true) built under macOS Big Sur with Xcode 12.5
 - Windows: [srnames.exe](https://github.com/citizenTwice/srnames/blob/main/bin/w/srnames.exe?raw=true) built under Windows 10 with Visual Studio 2019
 - Windows Unicode build: [srnamesu.exe](https://github.com/citizenTwice/srnames/blob/main/bin/w/srnamesu.exe?raw=true) built under Windows 10 with Visual Studio 2019
 - DOS: [SRNAMES.EXE](https://github.com/citizenTwice/srnames/blob/main/bin/dos/SRNAMES.EXE?raw=true)
