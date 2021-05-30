@@ -151,6 +151,7 @@ Pre-built binaries are provided for the following platform
 - Windows: [srnames.exe](https://github.com/citizenTwice/srnames/blob/main/bin/w/SRNAMES.EXE?raw=true) built under Windows 10 with Visual Studio 2019
 - Windows Unicode build: [srnamesu.exe](https://github.com/citizenTwice/srnames/blob/main/bin/w/SRNAMESU.EXE?raw=true) built under Windows 10 with Visual Studio 2019
 - DOS: [SRNAMES.EXE](https://github.com/citizenTwice/srnames/blob/main/bin/DOS/SRNAMES.EXE?raw=true)
+
 For Linux, Unix it is highly recommended that you clone the repo and build it using your distribution's tools.
 For convenience, I'm including a statically-linked 64-bit ELF binary built on my Arch Linux installation
 - Arch Linux [srnames_static](https://github.com/citizenTwice/srnames/blob/main/bin/linux_arch64/srnames_static?raw=true)
