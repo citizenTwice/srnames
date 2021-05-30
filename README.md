@@ -75,7 +75,9 @@ Prefix images with parent dir name, preserving image number, so files can be mer
 ./PIC/IMG0437.JPG
 ./PIC/IMG0450.JPG
 ./PIC/IMG0402.JPG
- % srnames -r --regex '--search=IMG(\d\d\d\d)' '--repl=#dir_$1' -q -y && mv PIC/* img/ && mv THUMB/* img/
+ % srnames -r --regex '--search=IMG(\d\d\d\d)' '--repl=#dir_$1' -q -y && 
+  mv PIC/* img/ 
+  && mv THUMB/* img/
  % find . 
 ./PIC
 ./THUMB
