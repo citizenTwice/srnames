@@ -59,8 +59,8 @@ srnames - search and replace file/dir names.
 
 ```
  
-### Examples
-#### regex search & replace
+## Examples
+### regex search & replace
 Prefix images with parent dir name, preserving image number, so files can be merged into a single directory
 ```
  # DO notice options have been 'quoted' to prevent the shell from corrputing the passed parameters
@@ -92,29 +92,29 @@ Prefix images with parent dir name, preserving image number, so files can be mer
 ./img/THUMB_0450.JPG
 ```
 
-#### Rolling-back changes
+### Rolling-back changes
 Creating a changelog is recommended as it makes it possible to undo/'unrname' what was changed. 
 The changelog is created by default on some platforms and can be specified via command-line with the --chglog option.
 The below scripts (which can be found in the tools directory) can use the changelog to roll-back changes.
-##### Mac/Linux
+#### Mac/Linux
 ```
 ./tools/make_undo_script.sh CHANGES_TO_LINUX_MASTER.LST
 bash UNDO_SCRIPT_95613.sh
 Done!
 ```
-##### Windows
+#### Windows
 ```
 powershell -ExecutionPolicy Bypass -File tools\ps_undo_rename_from_changelog.ps1
 Please enter path to changelog file: CHANGES.LOG
 Done!
 ```
  
-### Demos
-##### regex & Unicode 
+## Demos
+###regex & Unicode 
 ![unicode rename](demos/ren_unicode.png)
-##### Simple DOS rename
+### Simple DOS rename
 ![DOS rename](demos/dos_rename.png)
-##### Undo demo
+### Undo demo
 ![test](https://user-images.githubusercontent.com/20754288/120099884-2f433980-c13e-11eb-9964-cda76bf26d3c.mov)
 
 
