@@ -95,9 +95,9 @@ public:
     if (m_fp && !m_error) {
 #if defined(_WIN32)
       m_tmpold.set(_old);
-      m_tmpold.replace_all(_T("^"), _T("^^"));
+      // m_tmpold.replace_all(_T("^"), _T("^^"));
       m_tmpnew.set(_new);
-      m_tmpnew.replace_all(_T("^"), _T("^^"));
+      // m_tmpnew.replace_all(_T("^"), _T("^^"));
       fprintf(m_fp, _T("%d\t\"%s\"\t\"%s\"\n"), m_ord, m_tmpold.get(), m_tmpnew.get());
 #elif defined(__DOS__)
       fprintf(m_fp, _T("%d\t%s\t%s\n"), m_ord, _old, _new);
