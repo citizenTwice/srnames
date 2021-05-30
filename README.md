@@ -8,6 +8,7 @@ Multi-platform search+replace file & directory rename utility.
 [Notes](#Notes)  
 [Examples](#Examples)  
 [Demos](#Demos)  
+[Download & binaries](#download)  
 [Building](#Building)  
 [License](#License)  
 [Feedback & Contributing](#Feedback)  
