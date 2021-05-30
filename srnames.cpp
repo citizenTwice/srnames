@@ -66,6 +66,16 @@ SOFTWARE.
 #pragma comment(lib, "shlwapi.lib")
 #endif
 
+#if defined(__DOS__)
+#include <dos.h>
+#endif
+
+#if defined(__linux__) || defined(__unix__) || defined(__APPLE__)
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
+#endif
+
 #if defined(_UNICODE) && defined(_MSC_VER)
 #include <tchar.h>
 //#define main _tmain
@@ -110,7 +120,7 @@ SOFTWARE.
 #if !defined(TARGET_MAXP)
 #if defined(__DOS__)
 #define TARGET_MAXP 256
-#elif defined(__linux__) || (__unix__) || (__APPLE__)
+#elif defined(__linux__) || defined(__unix__) || defined(__APPLE__)
 #define TARGET_MAXP PATH_MAX*2
 #elif defined(_WIN32)
 #define TARGET_MAXP MAX_PATH*2
@@ -193,8 +203,27 @@ static const bool is_opt(const _TCHAR* arg, const _TCHAR* opt) {
   return strcmp(arg,opt) == 0;
 }
 
+static bool exists(const _TCHAR* path) {
+#if defined(__DOS__)  
+  unsigned tmp;
+  return (_dos_getfileattr(path, &tmp) == 0);
+#elif defined(__WIN32)  
+  return (GetFileAttributes(path) != INVALID_FILE_ATTRIBUTES);
+#elif defined(__linux__) || defined(__unix__) || defined(__APPLE__) 
+  struct stat tmp;
+  return (lstat(path, &tmp) == 0);
+#else  
+  #include <STOP>
+#endif
+}
+
 static bool rename_file_or_dir(const _TCHAR* from, const _TCHAR* to) {
-  return rename(from, to) == 0;
+  if (exists(to)) {
+    fprintf(stderr,_T("DESTINATION EXISTS: %s\n"), to);
+    return false;
+  } else {
+    return rename(from, to) == 0;    
+  }
 }
 
 static void log_change(const _TCHAR* _old, const _TCHAR* _new) {

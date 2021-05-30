@@ -60,6 +60,35 @@ srnames - search and replace file/dir names.
 ```
  
 ### Examples
+#### regex search & replace
+Prefix images with parent dir name, preserving image number, so files can be merged into a single directory
+```
+ # DO notice options have been 'quoted' to prevent the shell from corrputing the passed parameters
+ % find .
+./THUMB
+./THUMB/IMG0397.JPG
+./THUMB/IMG0437.JPG
+./THUMB/IMG0450.JPG
+./THUMB/IMG0402.JPG
+./img
+./PIC/IMG0397.JPG
+./PIC/IMG0437.JPG
+./PIC/IMG0450.JPG
+./PIC/IMG0402.JPG
+ % srnames -r --regex '--search=IMG(\d\d\d\d)' '--repl=#dir_$1' -q -y && mv PIC/* img/ && mv THUMB/* img/
+ % find . 
+./PIC
+./THUMB
+./img
+./img/PIC_0397.JPG
+./img/PIC_0402.JPG
+./img/PIC_0437.JPG
+./img/PIC_0450.JPG
+./img/THUMB_0397.JPG
+./img/THUMB_0402.JPG
+./img/THUMB_0437.JPG
+./img/THUMB_0450.JPG
+```
 
 #### Rolling-back changes
 Creating a changelog is recommended as it makes it possible to undo/'unrname' what was changed. 
