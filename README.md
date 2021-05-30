@@ -20,7 +20,7 @@ Multi-platform search+replace file & directory rename utility.
  - macOS
  - Linux
  - Windows (ASCII & Unicode builds)
- - DOS/Freedos w.DPMI [experimental, some features are not available]
+ - DOS/DPMI, FreeDOS - [experimental, some features are not available]
  
 ### Syntax
 ```
@@ -110,6 +110,7 @@ Done!
 ```
  
 ### Demos
+![unicode rename](demo/ren_unicode.png)
 undo_demo.mov
 ![test](https://user-images.githubusercontent.com/20754288/120099884-2f433980-c13e-11eb-9964-cda76bf26d3c.mov)
 
@@ -132,7 +133,9 @@ undo_demo.mov
 ### License
 MIT
 
-### Feedback/Contact
+### Bugs/Suggestions/Comments/Feedback/Contact
 * Email: [LG@citizentwice.nl](mailto:LG@citizentwice.nl)
-Thanks for visting.
+
+#### Finally
+Thanks for visting!
 
