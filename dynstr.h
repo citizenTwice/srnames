@@ -103,12 +103,10 @@ public:
   _TCHAR* alloc_chars(UINT32 sz) {
    _TCHAR* rv = (_TCHAR*)calloc(sz, sizeof(_TCHAR));
    assert(rv);
-   //fflush(stdout);
    return rv;
   }
 
   void free_chars(void *b) {
-//    fflush(stdout);
     ::free(b);
   }
   
@@ -244,14 +242,11 @@ public:
     assert(repl_s);
     assert(buf);
     std::regex re{ search_s };
-//    wprintf(L"BEFORE %s\n", buf);
     std::string rs = std::regex_replace(std::string{ buf }, re, std::string{ repl_s });
-//    wprintf(L"AFTER  %s\n", rs.c_str());
     bool rv = strcmp(rs.c_str(), buf) != 0;
     if (rv) {
       set(rs.c_str());
     }
-//    wprintf(L"out    %s\n", buf);
     return rv;
   }
 #endif
