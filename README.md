@@ -72,10 +72,20 @@ On macOS and Linux Unicode should work out-of-the-box with UTF-8 locales. On wor
 Unicode support and regular expressions are not available under DOS due to lack of experience building Unicode under DOS and not being able to find a usable std::regex implementation (yet.)
  
 ## Examples
+### change file extension for whole tree
+Replace .cpp file extension with .CC for the whole codebase:
+```
+srnames.exe -r --search=.cpp --repl=.CC --start-at=$HOME/prj/src/
+```
+### use of cnt variable
+Align/anonimize file & directory names, saving the original names to the changelog.
+```
+srnames.exe -r --regex --search=.* --repl=FILE_#cnt.BIN --chglog=FILECHANGES.LOG --start-at=W:\SHARE\ -q -y 
+srnames.exe -r -D --regex --search=.* --repl=DIR#8cnt --chglog=DIRCHANGES.LOG --start-at=W:\SHARE\ -q -y
+```
 ### regex search & replace
 Prefix images with parent dir name, preserving image number, so files can be merged into a single directory
 ```
- # DO notice options have been 'quoted' to prevent the shell from corrputing the passed parameters
  % find .
 ./THUMB
 ./THUMB/IMG0397.JPG
@@ -87,6 +97,7 @@ Prefix images with parent dir name, preserving image number, so files can be mer
 ./PIC/IMG0437.JPG
 ./PIC/IMG0450.JPG
 ./PIC/IMG0402.JPG
+ # DO notice options have been 'quoted' to prevent the shell from corrputing the passed parameters
  % srnames -r --regex '--search=IMG(\d\d\d\d)' '--repl=#dir_$1' -q -y && 
   mv PIC/* img/ &&
   mv THUMB/* img/
