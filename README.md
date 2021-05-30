@@ -9,6 +9,8 @@ Multi-platform search+replace file & directory rename utility.
 [Examples](#Examples)  
 [Demos](#Demos)  
 [Building](#Building)  
+[License](#License)  
+[Feedback & Contributing](#Feedback)  
 
 ## Features
  - Rename files and/or directories, recursively if needed
@@ -128,25 +130,26 @@ Done!
 ![test](https://user-images.githubusercontent.com/20754288/120099884-2f433980-c13e-11eb-9964-cda76bf26d3c.mov)
 
 
-### Building
-#### macOS
+## Building
+### macOS
 - requirements: recent (as of 2021) XCode version
 - build command ` build_macos.sh `
-#### Linux and other *ix
+### Linux and other *ix
 - requirements: recent (as of 2021) GCC C++ version
 - build command ` build_unix.sh `
-#### Windows
+### Windows
 - requirements: Visual C++ from VS2019 or newer
 - build command ` build_vc2019.cmd `
-#### DOS
+### DOS
 - requirements: recent (as of 2021) OpenWatcom C/C++
 - build command ` BUILDOS.BAT `
 
 
-### License
-MIT
+## License
+MIT [License](LICENSE)
 
-### Bugs/Suggestions/Comments/Feedback/Contact
+## Feedback
+Bugs/Suggestions/Comments/Feedback to:
 * Email: [LG@citizentwice.nl](mailto:LG@citizentwice.nl)
 
 #### Finally
