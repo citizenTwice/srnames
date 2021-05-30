@@ -5,9 +5,7 @@ Multi-platform search+replace file & directory rename utility.
 [Headers](#features)  
 [Supported platforms](#platforms)  
 [Usage](#usage)  
-...snip...    
 
-<a name="features"/>
 ## Features
  - Can rename both files and directories, recursively if needed.
  - Regex support
@@ -17,14 +15,13 @@ Multi-platform search+replace file & directory rename utility.
  - Unicode support
  - Portable, stand-alone executable.
  - Builds without dependencies other than the platform's compiler/SDK.
-<a name="platforms"/>
+
 ## Supported platforms
  - macOS
  - Linux
  - Windows (ASCII & Unicode builds)
  - DOS/Freedos w.DPMI [experimental, some features are not available]
  
-<a name="usage"/>
 ### Usage
 ```
 srnames - search and replace file/dir names.
