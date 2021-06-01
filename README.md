@@ -68,7 +68,7 @@ srnames - search and replace file/dir names.
 ```
 ## Notes
 ### Unicode support
-On macOS and Linux Unicode should work out-of-the-box with UTF-8 locales. On working with regular expressions, remember that things like Emoji's do not necessarily count as or expand to a single character. On Windows, there is separate build SRNAMESU.EXE, Unicode will not work with the normal, ASCII-only build SRNAMES.EXE.
+On macOS and Linux, Unicode should work out-of-the-box with UTF-8 locales. On working with regular expressions, remember that things like Emoji's do not necessarily count as or expand to a single character. On Windows, there is separate build SRNAMESU.EXE, Unicode will not work with the normal, ASCII-only build SRNAMES.EXE.
 ### DOS
 Unicode support and regular expressions are not available under DOS due to lack of experience building Unicode under DOS and not being able to find a usable std::regex implementation (yet.)
  
@@ -146,7 +146,7 @@ The Unicode build on Windows should handle things like emojis without problems e
 ![test](https://user-images.githubusercontent.com/20754288/120099884-2f433980-c13e-11eb-9964-cda76bf26d3c.mov)
 
 # Download
-Head over to [Releases](releases/)
+Head over to [Releases](https://github.com/citizenTwice/srnames/releases/)
 
 ## Building
 ### macOS
@@ -169,7 +169,7 @@ MIT [License](LICENSE)
 
 ## Feedback
 Bugs/Suggestions/Comments/Feedback to:
-* Email: [GIT@THLG.NL](mailto:GIT@THLG.NL)
+* Email: [feedback@THLG.NL](mailto:feedback@THLG.NL)
 
 #### Finally
 Thanks for visting!
