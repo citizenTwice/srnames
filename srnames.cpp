@@ -266,6 +266,7 @@ static void replace_and_update_keywords(DYNSTR* s) {
     s->replace_all_kw(_T("#8cnt"), tmp, _T('#'));
     g_globals.var_rencnt++;
   }
+  s->replace_all_kw(_T("#del"), _T(""), _T('#'));
 #if defined(VAR_ALL_FEATURES)
   if (g_globals.var_parent_dir != NULL) {
     s->replace_all_kw(_T("#dir"), g_globals.var_parent_dir, _T('#'));
@@ -433,10 +434,11 @@ static bool do_dir(
 }
 
 static void show_help() {
-  printf(_T("srnames - search and replace file/dir names.\n"));
-  printf(_T("  Required:\n"));
-  printf(_T("          --search=str1              String to search to for.\n"));
-  printf(_T("          --repl=str2                Replacement string.\n"));
+  printf(_T("srnames [options] str1 str2\n"));
+  printf(_T("  Search and replace file/dir names.\n"));
+  printf(_T("  Parameters:\n"));
+  printf(_T("    str1, --search=str1              String to search to for.\n"));
+  printf(_T("    str2, --repl=str2                Replacement string.\n"));
   printf(_T("  Options:\n"));
   printf(_T("      -i, --ignore-case              Ignore case in searches.\n"));
   printf(_T("      -d, --dirs-too                 Also rename directories (default is files-only.)\n"));
@@ -466,12 +468,25 @@ static void show_help() {
   printf(_T("                                     #dir  = Parent dir of current item.\n"));
   printf(_T("                                     #dtm  = YYYYMMDDhhmmss.\n"));
 #endif
+  printf(_T("                                     #del  = empty string \"\".\n"));
+  printf(_T("                                             to remove str1 inst.of replacing it.\n"));
   printf(_T("                                     #cnt  = Rename counter.\n"));
   printf(_T("                                     #2cnt = ditto, zero-filled NN.\n"));
   printf(_T("                                     #3cnt = ditto, zero-filled NNN.\n"));
   printf(_T("                                     #4cnt = ditto, zero-filled NNNN.\n"));
   printf(_T("                                     #8cnt = ditto, zero-filled NNNNNNNN.\n"));
   printf(_T("                                     ##    = literal #.\n"));
+#if defined(_WIN32)
+  printf(_T("IMPORTANT:\n"));
+  printf(_T(" Windows CMD.EXE: special character ^ should be escaped as ^^:    \n"));
+  printf(_T("        --search=^begin  -> --search=^^begin                                                     \n"));
+#elif defined(__linux__) || defined(__unix__) || defined(__APPLE__)
+  printf(_T("IMPORTANT:\n"));
+  printf(_T(" Unix shells: use single quotes '' to pass search/replace strings:          \n"));
+  printf(_T("        --search=([_-]+) -> '--search=([_-]+)'                                                   \n"));
+  printf(_T("        --repl=$1_$1     -> '--repl=$1_$1'                                                       \n"));
+  printf(_T("        --repl=#del      -> '--repl=#del'                                                        \n"));
+#endif
   printf(_T("\n"));
 }
 
@@ -545,8 +560,17 @@ int _tmain(int ac, _TCHAR** av) {
     } else if ((argval = get_opt_val(av[i], _T("--chglog=")))) {
       g_globals.do_not_log_changes = false;
       g_globals.chglog_path = argval;
-    } else {
+    } else if (av[i][0] == _T('-')) {
       fprintf(stderr, _T("WARNING: IGNORING ARG: %s\n"), av[i]);
+    } else {
+      if (g_globals.search && g_globals.repl) {
+        fprintf(stderr, _T("ERROR: MULTIPLE SEARCH/REPLACE STRINGS NOT ALLOWED: <%s> <%s> <%s>\n"), g_globals.search, g_globals.repl, av[i]);
+        return 1;
+      } else if (g_globals.search) {
+        g_globals.repl = av[i];
+      } else {
+        g_globals.search = av[i];
+      }
     }
   }
   if (!g_globals.search || !g_globals.repl) {

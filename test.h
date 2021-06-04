@@ -34,6 +34,43 @@ SOFTWARE.
 #if defined(UNIT_TEST)
 static void unit_test0() {
   {
+    DYNSTR s1(_T("normal string"));
+    replace_and_update_keywords(&s1);
+    assert(s1.equals(_T("normal string")));
+  }
+  // test #del
+  {
+    DYNSTR s1(_T("normal string#del"));
+    replace_and_update_keywords(&s1);
+    assert(s1.equals(_T("normal string")));
+  }
+  {
+    DYNSTR s1(_T("#delnormal#del string#del"));
+    replace_and_update_keywords(&s1);
+    assert(s1.equals(_T("normal string")));
+  }
+  {
+    DYNSTR s1(_T("##delnormal##del string##del"));
+    replace_and_update_keywords(&s1);
+    assert(s1.equals(_T("#delnormal#del string#del")));
+  }
+  {
+    DYNSTR s1(_T("#del"));
+    replace_and_update_keywords(&s1);
+    assert(s1.equals(_T("")));
+  }
+  {
+    DYNSTR s1(_T("##del"));
+    replace_and_update_keywords(&s1);
+    assert(s1.equals(_T("#del")));
+  }
+  {
+    DYNSTR s1(_T("#del "));
+    replace_and_update_keywords(&s1);
+    assert(s1.equals(_T(" ")));
+  }
+  // test #cnt & variations
+  {
     DYNSTR s1(_T("FILE#cnt.TXT"));
     replace_and_update_keywords(&s1);
     assert(s1.equals(_T("FILE1.TXT")));
@@ -197,6 +234,7 @@ static void unit_test0() {
     assert(s2.equals(expected2));
     assert(s3.equals(expected3));
   }
+  // dir test
   {
     g_globals.var_parent_dir = _T("TESTDIR");
     DYNSTR s1(_T("##FILE_#dir_123#"));
@@ -206,7 +244,6 @@ static void unit_test0() {
     assert(s1.equals(_T("#FILE_TESTDIR_123#")));
     assert(s2.equals(_T("FILE_#dir_123#")));
   }
-  // dir test
 #endif
 }
 

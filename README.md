@@ -31,10 +31,11 @@ Multi-platform search+replace file & directory rename utility.
  
 ### Syntax
 ```
-srnames - search and replace file/dir names.
-  Required:
-          --search=str1              String to search to for.
-          --repl=str2                Replacement string.
+srnames [options] str1 str2
+  Search and replace file/dir names.
+  Parameters:
+    str1, --search=str1              String to search to for.
+    str2, --repl=str2                Replacement string.
   Options:
       -i, --ignore-case              Ignore case in searches.
       -d, --dirs-too                 Also rename directories (default is files-only.)
@@ -58,6 +59,8 @@ srnames - search and replace file/dir names.
   Repl. string variables:            (applied after regex, when that's available)
                                      #dir  = Parent dir of current item.
                                      #dtm  = YYYYMMDDhhmmss.
+                                     #del  = empty string "".
+                                             to remove str1 inst.of replacing it.
                                      #cnt  = Rename counter.
                                      #2cnt = ditto, zero-filled NN.
                                      #3cnt = ditto, zero-filled NNN.
@@ -67,6 +70,20 @@ srnames - search and replace file/dir names.
 
 ```
 ## Notes
+### Unix Shells
+Use single quotes '' to prevent the shell from altering search/replace strings:
+```
+--search=([_-]+) -> '--search=([_-]+)' 
+--repl=$1_$1     -> '--repl=$1_$1' 
+--repl=#del      -> '--repl=#del' 
+
+```
+### Windows CMD.EXE
+Special character ^ should be escaped as ^^ in order for it to passed to the program:
+```
+--search=^begin  -> --search=^^begin
+
+```
 ### Unicode support
 On macOS and Linux, Unicode should work out-of-the-box with UTF-8 locales. On working with regular expressions, remember that things like Emoji's do not necessarily count as or expand to a single character. On Windows, there is separate build SRNAMESU.EXE, Unicode will not work with the normal, ASCII-only build SRNAMES.EXE.
 ### DOS
@@ -74,9 +91,18 @@ Unicode support and regular expressions are not available under DOS due to lack 
  
 ## Examples
 ### change file extension for whole tree
-Replace .cpp file extension with .CC for the whole codebase:
+Replace .CPP file extension with .cc for the whole codebase:
 ```
-srnames.exe -r --search=.cpp --repl=.CC --start-at=$HOME/prj/src/
+srnames.exe -r --search=.CPP --repl=.cc --start-at=$HOME/prj/src/
+```
+### remove spaces 
+Remove spaces from file names in the current directory
+```
+srnames.exe " "  #del
+```
+Same as above but also rename directories
+```
+srnames.exe " "  #del -d
 ```
 ### use of cnt variable
 Align/anonimize file & directory names, saving the original names to the changelog.
